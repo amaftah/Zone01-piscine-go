@@ -3,7 +3,7 @@ package main
 import "github.com/01-edu/z01"
 
 func main() {
-	QuadD(5, 3)
+	QuadD(5, 1)
 }
 
 func QuadD(x, y int) {
