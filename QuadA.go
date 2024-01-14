@@ -1,10 +1,6 @@
-package main
+package piscine
 
 import "github.com/01-edu/z01"
-
-func main() {
-	QuadA(10, 10)
-}
 
 func QuadA(x, y int) {
 	if x > 0 || y > 0 {
@@ -26,5 +22,4 @@ func QuadA(x, y int) {
 	} else {
 		return
 	}
-
 }

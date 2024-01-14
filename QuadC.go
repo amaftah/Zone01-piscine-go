@@ -26,7 +26,3 @@ func QuadC(x, y int) {
 
 	}
 }
-
-func main() {
-	QuadC(5, 3)
-}

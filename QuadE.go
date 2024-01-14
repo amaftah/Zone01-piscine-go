@@ -1,4 +1,4 @@
-package main
+package piscine
 
 import "github.com/01-edu/z01"
 
@@ -18,7 +18,6 @@ func QuadE(x int, y int) {
 						z01.PrintRune('A')
 					}
 				case (i == 0 && j == x-1) || (i == y-1 && j == 0):
-
 					z01.PrintRune('C')
 				case i == 0 || i == y-1:
 					z01.PrintRune('B')
@@ -31,8 +30,4 @@ func QuadE(x int, y int) {
 			z01.PrintRune('\n')
 		}
 	}
-}
-
-func main() {
-	QuadE(5, 3)
 }
