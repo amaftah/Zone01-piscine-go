@@ -26,3 +26,7 @@ func QuadC(x, y int) {
 
 	}
 }
+
+func main() {
+	QuadC(1,1)
+}

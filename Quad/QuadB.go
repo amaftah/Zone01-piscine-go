@@ -32,3 +32,7 @@ func QuadB(x int, y int) {
 		}
 	}
 }
+
+func main() {
+	QuadB(1,5)
+}

@@ -1,6 +1,10 @@
-package piscine
+package main
 
 import "github.com/01-edu/z01"
+
+func main() {
+	QuadE(5,1)
+}
 
 func QuadE(x int, y int) {
 	if x > 0 && y > 0 {

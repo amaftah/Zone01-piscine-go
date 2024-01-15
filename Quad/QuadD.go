@@ -1,6 +1,10 @@
-package piscine
+package main
 
 import "github.com/01-edu/z01"
+
+func main(){
+	QuadD(5,3)
+}
 
 func QuadD(x, y int) {
 	if x > 0 || y > 0 {
