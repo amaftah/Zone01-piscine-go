@@ -1,10 +1,18 @@
-package piscine
+package main
+
+import "fmt"
 
 func IsNumeric(str string) bool {
 	for _, ltr := range str {
-		if ltr > '0' || ltr < '9' {
-			return true
+		if ltr < '0' || ltr <{	
+			return false
 		}
 	}
-	return false
+	return true
+}
+
+func main() {
+	fmt.Println(IsNumeric("Hello!"))
+	fmt.Println(IsNumeric("Salut!"))
+	fmt.Println(IsNumeric("Ola!"))
 }

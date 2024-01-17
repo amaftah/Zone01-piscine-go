@@ -1,4 +1,6 @@
-package Piscine
+package main
+
+import "fmt"
 
 func IsPrintable(str string) bool {
 	for _, ltr := range str {
@@ -7,4 +9,8 @@ func IsPrintable(str string) bool {
 		}
 	}
 	return false
+}
+
+func main() {
+	fmt.Println(IsPrintable("Hello!"))
 }

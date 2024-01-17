@@ -3,8 +3,8 @@ package main
 import "fmt"
 
 func Index(s string, toFind string) int {
-	for r := 0; r < len(s); r++ {
-		if s[r] == toFind[0] {
+	for r := 0; r < len(s)-len(toFind); r++ {
+		if s[r:r+len(toFind)] == toFind{
 			return r
 		}
 	}
