@@ -4,7 +4,7 @@ import "fmt"
 
 func IsNumeric(str string) bool {
 	for _, ltr := range str {
-		if ltr < '0' || ltr <{	
+		if ltr < '0' || ltr > '9' {
 			return false
 		}
 	}
