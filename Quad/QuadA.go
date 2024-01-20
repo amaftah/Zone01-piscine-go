@@ -3,7 +3,7 @@ package main
 import "github.com/01-edu/z01"
 
 func QuadA(x, y int) {
-	if x > 0 || y > 0 {
+	if x > 0 && y > 0 {
 		for i := 0 ; i < y ; i++ {
 			for j := 0 ; j < x ; j++ {
 
