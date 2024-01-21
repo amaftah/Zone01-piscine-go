@@ -54,6 +54,7 @@ func solveSudoku(arr *[][]int, length int) bool {
 	for number := 1; number <= 9; number++ { 
 		if isCorrect(*arr, row, column, number) {
 			(*arr)[row][column] = number 
+
 			if solveSudoku(arr, length) {
 				return true
 			} else {
@@ -101,6 +102,7 @@ func checkRow(arr [][]int, row int, num int) bool {
 }
 
 func checkColumn(arr [][]int, column int, num int) bool { 
+	for row := 0; row < len(arr); row++ {
 		if arr[row][column] == num {
 			return true
 		}
