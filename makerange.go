@@ -1,12 +1,29 @@
-package piscine
+package main
+
+import (
+	
+	"fmt"
+
+)
 
 func MakeRange(min, max int) []int {
-	if min >= max {
-		return nil
+	if min > max {
+		return []int{}
 	}
-	var result []int
-	for i := min; i < max; i++ {
-		result = append(result, i)
+	a := make([]int, max-min+1)
+	for i := range a {
+		a[i] = min + i
 	}
-	return result
+	return a
 }
+
+
+
+
+
+
+
+
+
+MakeRange(-1109273, -1109256) == []int{-1109273, -1109272, -1109271, -1109270, -1109269, -1109268, -1109267, -1109266, -1109265, -1109264, -1109263, -1109262, -1109261, -1109260, -1109259, -1109258, -1109257, -1109256} instead of []int{-1109273, -1109272, -1109271, -1109270, -1109269, -1109268, -1109267, -1109266, -1109265, -1109264, -1109263, -1109262, -1109261, -1109260, -1109259, -1109258, -1109257}
+exit status 1
