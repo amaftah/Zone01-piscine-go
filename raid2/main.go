@@ -8,7 +8,7 @@ import (
 
 func main() {
 	arr := os.Args[1:]
-	if checkErrors(arr) {
+	if   len(arr) != 9 {
 		fmt.Println("Error")
 	} else {
 		sudoku := optimizeSudoku(arr)
@@ -20,7 +20,7 @@ func main() {
 	}
 }
 
-func checkErrors(arr []string) bool { 
+/*func checkErrors(arr []string) bool { 
 	for i, str := range arr {
 		if len(str) != 9 {
 			return true
@@ -33,7 +33,7 @@ func checkErrors(arr []string) bool {
 	}
 	return false
 }
-
+*/
 func solveSudoku(arr *[][]int, length int) bool { 
 	isEmpty := true
 	row := -1 
