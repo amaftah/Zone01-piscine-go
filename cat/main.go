@@ -6,28 +6,38 @@ import (
     "os"
 )
 
+func printError(err error) {
+    errorMsg := "ERROR: " + err.Error()
+    for _, r := range errorMsg {
+        z01.PrintRune(r)
+    }
+    z01.PrintRune('\n')
+}
+
 func main() {
-    if len(os.Args) == 1 {    
+    if len(os.Args) == 1 {
         data, err := ioutil.ReadAll(os.Stdin)
         if err != nil {
-            z01.PrintRune('\n')
-            return
+            printError(err)
+            os.Exit(1)
         }
         os.Stdout.Write(data)
     } else {
-        file, err := os.Open(os.Args[1])
-        if err != nil {
-            z01.PrintRune('\n')
-            return
-        }
-        defer file.Close()
+        for _, filename := range os.Args[1:] {
+            file, err := os.Open(filename)
+            if err != nil {
+                printError(err)
+                os.Exit(1)
+            }
+            defer file.Close()
 
-        data, err := ioutil.ReadAll(file)
-        if err != nil {
-            z01.PrintRune('\n')
-            return
-        }
+            data, err := ioutil.ReadAll(file)
+            if err != nil {
+                printError(err)
+                os.Exit(1)
+            }
 
-        os.Stdout.Write(data)
+            os.Stdout.Write(data)
+        }
     }
 }
