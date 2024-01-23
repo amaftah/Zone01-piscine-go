@@ -2,7 +2,6 @@ package main
 
 import (
     "os"
-    
     "github.com/01-edu/z01"
 )
 
@@ -12,29 +11,29 @@ func main() {
     if len(arguments) > 0 && arguments[0] == "--upper" {
         upper = true
         arguments = arguments[1:]
+    } else if len(arguments) == 0 {
+        return
     }
 
-
-    convert := func(s string) rune {
+    for _, arg := range arguments {
         n := 0
-        for _, c := range s {
+        valid := true
+        for _, c := range arg {
             if c < '0' || c > '9' {
-                return ' '
+                valid = false
+                break
             }
             n = n*10 + int(c-'0')
         }
-        if n < 1 || n > 26 {
-            return ' '
+        if !valid || n < 1 || n > 26 {
+            z01.PrintRune(' ')
+            continue
         }
         if upper {
-            return rune('A' + n - 1)
+            z01.PrintRune(rune('A' + n - 1))
+        } else {
+            z01.PrintRune(rune('a' + n - 1))
         }
-        return rune('a' + n - 1)
-    } 
-
-    for _, word := range arguments {
-        letter := convert(word)
-        z01.PrintRune(letter)
     }
     z01.PrintRune('\n')
 }
