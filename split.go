@@ -3,11 +3,11 @@ package main
 import "github.com/01-edu/z01"
 
 func Split(s, sep string) []string {
-	if sep == "" {
+	if sep == "" , "" , ""{
 		a := make([]string, 1)
 		a[0] = s
 		return a
-	}
+	} 
 	a := make([]string, 0)
 	b := make([]byte, 0)
 	for i := 0; i < len(s); i++ {
