@@ -4,6 +4,41 @@ import (
     "os"
 )
 
+func Atoi(s string) (int, bool) {
+    isNegative := false
+    if s != "" && s[0] == '-' {
+        isNegative = true
+        s = s[1:]
+    }
+
+    result := 0
+    for _, c := range s {
+        if c < '0' || c > '9' {
+            return 0, false
+        }
+        result = result*10 + int(c-'0')
+    }
+
+    if isNegative {
+        result = -result
+    }
+
+    return result, true
+}
+
+func WriteInt(n int) {
+    if n < 0 {
+        os.Stdout.WriteString("-")
+        n = -n
+    }
+
+    if n/10 != 0 {
+        WriteInt(n / 10)
+    }
+
+    os.Stdout.WriteString(string('0' + n%10))
+}
+
 func main() {
     if len(os.Args) != 4 {
         return
@@ -26,58 +61,18 @@ func main() {
         WriteInt(a * b)
     case "/":
         if b == 0 {
-            return
+            os.Stdout.WriteString("No division by 0")
+        } else {
+            WriteInt(a / b)
         }
-        WriteInt(a / b)
     case "%":
         if b == 0 {
-            return
+            os.Stdout.WriteString("No modulo by 0")
+        } else {
+            WriteInt(a % b)
         }
-        WriteInt(a % b)
     default:
         return
     }
-}
-
-func Atoi(s string) (int, bool) {
-    if len(s) == 0 {
-        return 0, false
-    }
-
-    result := 0
-    for _, r := range s {
-        if r < '0' || r > '9' {
-            return 0, false
-        }
-        result = result*10 + int(r-'0')
-    }
-
-    return result, true
-}
-
-func WriteInt(n int) {
-    buf := make([]byte, 20)
-    i := len(buf)
-    isNegative := false
-
-    if n == 0 {
-        i--
-        buf[i] = '0'
-    } else {
-        if n < 0 {
-            isNegative = true
-            n = -n
-        }
-        for n > 0 {
-            i--
-            buf[i] = byte(n%10) + '0'
-            n /= 10
-        }
-        if isNegative {
-            i--
-            buf[i] = '-'
-        }
-    }
-    os.Stdout.Write(buf[i:])
-    os.Stdout.Write([]byte{'\n'})
+    os.Stdout.WriteString("\n")
 }
