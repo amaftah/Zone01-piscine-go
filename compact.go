@@ -20,7 +20,7 @@ func Compact(ptr *[]string) int {
 
 
 
-
+}
 
 
 const N = 6
