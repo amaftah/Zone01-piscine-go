@@ -2,7 +2,7 @@ package main
 
 import "github.com/01-edu/z01"
 
-func QuadB(x int, y int) {
+func QuadB(x int, y int) string {
 	if x > 0 && y > 0 {
 		for i := 0; i < y; i++ {
 			for j := 0; j < x; j++ {
@@ -31,8 +31,18 @@ func QuadB(x int, y int) {
 			z01.PrintRune('\n')
 		}
 	}
+	return itoa(x) + itoa(y)
+}
+
+func itoa(n int) string {
+	var res string
+	for n != 0 {
+		res = string(n%10+48) + res
+		n /= 10
+	}
+	return res
 }
 
 func main() {
-	QuadB(1,5)
+	QuadB(1, 5)
 }

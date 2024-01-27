@@ -2,11 +2,7 @@ package main
 
 import "github.com/01-edu/z01"
 
-func main(){
-	QuadD(5,3)
-}
-
-func QuadD(x, y int) {
+func QuadD(x, y int) string {
 	if x > 0 || y > 0 {
 		for i := 0; i < y; i++ {
 			for j := 0; j < x; j++ {
@@ -25,7 +21,19 @@ func QuadD(x, y int) {
 			}
 			z01.PrintRune('\n')
 		}
-	} else {
-		return
 	}
+	return itoa(x) + itoa(y)
+}
+
+func itoa(n int) string {
+	var res string
+	for n != 0 {
+		res = string(n%10+48) + res
+		n /= 10
+	}
+	return res
+}
+
+func main() {
+	QuadD(1, 1)
 }
