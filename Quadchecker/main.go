@@ -2,52 +2,32 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
 	"os"
-	"os/exec"
-	"sort"
-	"strings"
 )
 
-func quadchecker(input string) string {
-	quads := []string{"./QuadA", "./QuadB", "./QuadC", "./QuadD", "./QuadE"}
-	matches := []string{}
-
-	for _, quad := range quads {
-		cmd := exec.Command(quad)
-		out, _ := cmd.Output()
-
-		if strings.TrimSpace(string(out)) == input {
-			matches = append(matches, strings.TrimPrefix(quad, "./"))
-		}
-	}
-
-	ex1 := exec.Command("./QuadA")
-	ex1.Stdout = os.Stdout
-	ex1.Stderr = os.Stderr
-	err := ex1.Run()
+func checkDimensions(filename string) {
+	// Read the file
+	data, err := ioutil.ReadFile("./QuadA")
 	if err != nil {
-		fmt.Println("Error running QuadA:", err)
+		fmt.Println("File reading error", err)
+		return
 	}
 
-	ex2 := exec.Command("./QuadB")
-	ex2.Stdout = os.Stdout
-	ex2.Stderr = os.Stderr
-	err = ex2.Run()
-	if err != nil {
-		fmt.Println("Error running QuadB:", err)
+	// Here you can add your logic to check the dimensions of the file
+	// For now, we just print the length of the data
+	fmt.Println("Length of file:", len(data))
+}
+
+func main() {
+	// Check if a filename was provided
+	if len(os.Args) < 2 {
+		fmt.Println("Please provide a filename")
+		os.Exit(1)
 	}
 
-	ex3 := exec.Command("./QuadC")
-	ex3.Stdout = os.Stdout
-	err = ex3.Run()
-	if err != nil {
-		fmt.Println("Error running QuadC:", err)
+	// Loop over all provided filenames
+	for _, filename := range os.Args[1:] {
+		checkDimensions(filename)
 	}
-
-	if len(matches) == 0 {
-		return "Not a quad function\n"
-	}
-
-	sort.Strings(matches)
-	return strings.Join(matches, " || ") + "\n"
 }
