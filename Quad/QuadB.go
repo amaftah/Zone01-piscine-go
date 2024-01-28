@@ -1,8 +1,24 @@
 package main
 
-import "github.com/01-edu/z01"
+import (
+	"os"
+	"strconv"
 
-func QuadB(x int, y int) string {
+	"github.com/01-edu/z01"
+)
+
+func main() {
+	if len(os.Args) != 3 {
+		return
+	}
+
+	x, err1 := strconv.Atoi(os.Args[1])
+	y, err2 := strconv.Atoi(os.Args[2])
+
+	if err1 != nil || err2 != nil {
+		return
+	}
+
 	if x > 0 && y > 0 {
 		for i := 0; i < y; i++ {
 			for j := 0; j < x; j++ {
@@ -18,7 +34,6 @@ func QuadB(x int, y int) string {
 						z01.PrintRune('/')
 					}
 				case (i == 0 && j == x-1) || (i == y-1 && j == 0):
-
 					z01.PrintRune('\\')
 				case i == 0 || i == y-1:
 					z01.PrintRune('*')
@@ -31,18 +46,4 @@ func QuadB(x int, y int) string {
 			z01.PrintRune('\n')
 		}
 	}
-	return itoa(x) + itoa(y)
-}
-
-func itoa(n int) string {
-	var res string
-	for n != 0 {
-		res = string(n%10+48) + res
-		n /= 10
-	}
-	return res
-}
-
-func main() {
-	QuadB(1, 5)
 }

@@ -1,12 +1,23 @@
 package main
 
-import "github.com/01-edu/z01"
+import (
+	"os"
+	"strconv"
+
+	"github.com/01-edu/z01"
+)
 
 func main() {
-	QuadE(5, 1)
+	if len(os.Args) == 3 {
+		x, err1 := strconv.Atoi(os.Args[1])
+		y, err2 := strconv.Atoi(os.Args[2])
+		if err1 == nil && err2 == nil {
+			QuadE(x, y)
+		}
+	}
 }
 
-func QuadE(x int, y int) string {
+func QuadE(x int, y int) {
 	if x > 0 && y > 0 {
 		for i := 0; i < y; i++ {
 			for j := 0; j < x; j++ {
@@ -34,14 +45,4 @@ func QuadE(x int, y int) string {
 			z01.PrintRune('\n')
 		}
 	}
-	return itoa(x) + itoa(y)
-}
-
-func itoa(n int) string {
-	var res string
-	for n != 0 {
-		res = string(n%10+48) + res
-		n /= 10
-	}
-	return res
 }

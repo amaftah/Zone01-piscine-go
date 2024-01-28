@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"os"
 	"os/exec"
 	"sort"
 	"strings"
@@ -21,33 +20,14 @@ func quadchecker(input string) string {
 		}
 	}
 
-	ex1 := exec.Command("./QuadA")
-	ex1.Stdout = os.Stdout
-	ex1.Stderr = os.Stderr
-	err := ex1.Run()
-	if err != nil {
-		fmt.Println("Error running QuadA:", err)
-	}
-
-	ex2 := exec.Command("./QuadB")
-	ex2.Stdout = os.Stdout
-	ex2.Stderr = os.Stderr
-	err = ex2.Run()
-	if err != nil {
-		fmt.Println("Error running QuadB:", err)
-	}
-
-	ex3 := exec.Command("./QuadC")
-	ex3.Stdout = os.Stdout
-	err = ex3.Run()
-	if err != nil {
-		fmt.Println("Error running QuadC:", err)
-	}
-
 	if len(matches) == 0 {
 		return "Not a quad function\n"
 	}
 
 	sort.Strings(matches)
 	return strings.Join(matches, " || ") + "\n"
+}
+
+func main() {
+	fmt.Println(quadchecker(1, 1))
 }

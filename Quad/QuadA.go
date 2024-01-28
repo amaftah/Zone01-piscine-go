@@ -1,8 +1,26 @@
 package main
 
-import "github.com/01-edu/z01"
+import (
+	"os"
+	"strconv"
 
-func QuadA(x, y int) string {
+	"github.com/01-edu/z01"
+)
+
+func main() {
+	if len(os.Args) != 3 {
+		z01.PrintRune('\n')
+		return
+	}
+
+	x, err1 := strconv.Atoi(os.Args[1])
+	y, err2 := strconv.Atoi(os.Args[2])
+
+	if err1 != nil || err2 != nil {
+		z01.PrintRune('\n')
+		return
+	}
+
 	if x > 0 && y > 0 {
 		for i := 0; i < y; i++ {
 			for j := 0; j < x; j++ {
@@ -20,18 +38,4 @@ func QuadA(x, y int) string {
 			z01.PrintRune('\n')
 		}
 	}
-	return itoa(x) + itoa(y)
-}
-
-func itoa(n int) string {
-	var res string
-	for n != 0 {
-		res = string(n%10+48) + res
-		n /= 10
-	}
-	return res
-}
-
-func main() {
-	QuadA(5, 3)
 }
