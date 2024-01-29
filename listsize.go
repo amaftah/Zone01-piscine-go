@@ -1,10 +1,6 @@
 package main
 
-import (
-	"fmt"
-
-	"piscine"
-)
+import "fmt"
 
 type NodeL struct {
 	Data interface{}
@@ -27,12 +23,12 @@ func ListSize(l *List) int {
 }
 
 func main() {
-	link := &piscine.List{}
+	link := &List{}
 
-	piscine.ListPushFront(link, "Hello")
-	piscine.ListPushFront(link, "2")
-	piscine.ListPushFront(link, "you")
-	piscine.ListPushFront(link, "man")
+	ListPushFront(link, "Hello")
+	ListPushFront(link, "2")
+	ListPushFront(link, "you")
+	ListPushFront(link, "man")
 
-	fmt.Println(piscine.ListSize(link))
+	fmt.Println(ListSize(link))
 }
