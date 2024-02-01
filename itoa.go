@@ -3,26 +3,19 @@ package main
 import "fmt"
 
 func Itoa(n int) string {
+	var s string
+	if n < 0 {
+		s += "-"
+		n = n-
+	}
 	if n == 0 {
 		return "0"
 	}
-
-	var result string
-	isNegative := n < 0
-	if isNegative {
-		n = -n
-	}
-
 	for n > 0 {
-		result = string('0'+n%10) + result
-		n = n / 10
+		s = string(n%10+'0') + s
+		n /= 10
 	}
-
-	if isNegative {
-		result = "-" + result
-	}
-
-	return result
+	return s
 }
 
 func main() {

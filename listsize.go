@@ -12,6 +12,18 @@ type List struct {
 	Tail *NodeL
 }
 
+func ListPushFront(l *List, data interface{}) {
+	newNode := &NodeL{Data: data}
+
+	if l.Head == nil {
+		l.Head = newNode
+		l.Tail = newNode
+	} else {
+		newNode.Next = l.Head
+		l.Head = newNode
+	}
+}
+
 func ListSize(l *List) int {
 	count := 0
 	node := l.Head

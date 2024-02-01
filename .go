@@ -1,6 +1,8 @@
-package piscine
+package main
 
-func atoi(s string) int {
+import "fmt"
+
+/*func atoi(s string) int {
 	i := 0
 	for i < len(s) && s[i] == ' ' {
 		i++
@@ -28,7 +30,7 @@ func atoi(s string) int {
 	}
 
 	return sign * num
-}
+}*/
 
 func itoa(n int) string {
 	s := ""
@@ -44,4 +46,11 @@ func itoa(n int) string {
 		n /= 10
 	}
 	return s
+}
+
+func main() {
+	fmt.Println(Itoa(12345))
+	fmt.Println(Itoa(0))
+	fmt.Println(Itoa(-1234))
+	fmt.Println(Itoa(987654321))
 }
